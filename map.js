@@ -1,5 +1,3 @@
-
-
 var map = L.map('map', { crs: L.CRS.Simple });
 
 var bounds = [[0,0],[1000,1000]];
@@ -221,11 +219,8 @@ function vauleOutputTwo(dataPointTwo)
         return intensity
 }
 
-
-// console.log('dataPointOne is ', vauleOutputOne(dataPointOne));
-// console.log('dataPointTwo is ', vauleOutputTwo(dataPointTwo));
-
-
+var lightIcon = L.icon({
+    iconUrl: 'light.png',});
 // Given the requisite coordinates and a value, create a marker and a heatmap
 // point
 function createPointOne(map, heatmap, latlng, dataPointOne)
@@ -236,12 +231,11 @@ function createPointOne(map, heatmap, latlng, dataPointOne)
     var latlngint = latlng;
     latlngint.push(dataPointOne);
 
-    var marker = L.marker(latlng).addTo(map);
+    var marker = L.marker(latlng,{icon: lightIcon}).addTo(map);
     
     heatmap.addLatLng(latlng);
     return marker;
 }
-
 
 
 function createPointTwo(map, heatmap, latlng, dataPointTwo)
@@ -252,7 +246,8 @@ function createPointTwo(map, heatmap, latlng, dataPointTwo)
     var latlngint = latlng;
     latlngint.push(dataPointTwo);
 
-    var marker = L.marker(latlng).addTo(map);
+
+    var marker = L.marker(latlng,{icon: lightIcon}).addTo(map);
     
     heatmap.addLatLng(latlng);
     return marker;
