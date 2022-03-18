@@ -78,5 +78,6 @@ function createPointTwo(map, heatmap, latlng, dataPointTwo)
 // doesn't work for me
 // createPointOne(map, heat, [800,800], dataPointOne);
 
+
 createPointOne(map, heat, [400,400], dataPointOne);
 createPointTwo(map, heat, [120,120], dataPointTwo);
