@@ -8,8 +8,8 @@ map.fitBounds(bounds);
 
 
 // Change us to vary the base sizes of the heatmap points.
-const defaultHmRadius = 50;
-const defaultHmBlur = 35;
+const defaultHmRadius = 40;
+const defaultHmBlur = 25;
 const gradient = {0.4: 'blue', 0.55: 'lime', 0.80: 'yellow', 1: 'red'}
 
 
@@ -74,6 +74,22 @@ function createPointTwo(map, heatmap, latlng, dataPointTwo)
     return marker;
 }
 
+
+function createPointThree(map, heatmap, latlng, dataPointThree)
+{
+    // A point on the heatmap consists of three values - the latitude, the
+    // longitude, and the intensity of the point, whereas a normal marker is
+    // just the latitude and longitude
+    var latlngint = latlng;
+    latlngint.push(dataPointThree);
+
+
+    var marker = L.marker(latlng,{icon: lightIcon}).addTo(map);
+    
+    heatmap.addLatLng(latlng);
+    return marker;
+}
+
 // Supposedly the highest intensity value by default should be 1.0, but that 
 // doesn't work for me
 // createPointOne(map, heat, [800,800], dataPointOne);
@@ -81,3 +97,4 @@ function createPointTwo(map, heatmap, latlng, dataPointTwo)
 
 createPointOne(map, heat, [400,400], dataPointOne);
 createPointTwo(map, heat, [120,120], dataPointTwo);
+createPointThree(map, heat, [500,300], dataPointThree);
