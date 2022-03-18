@@ -1,4 +1,10 @@
 #map {
     height: 1000px;
     width: 1000px;
+    
+}
+
+element.style {
+    transform: translate3d(350px, 550px, 9000px);
+    z-index: 2;
 }

@@ -33,10 +33,15 @@ map.on('zoomend', function(ev) {
     heat.setOptions({radius: defaultHmRadius, blur: defaultHmBlur});
 });
 
+var LeafIcon = L.Icon.extend({
+    options: {
+    iconSize:[60, 55],
+    }
+});
 
+var lightIcon = new LeafIcon ({
+    iconUrl: 'light.png'});
 
-var lightIcon = L.icon({
-    iconUrl: 'light.png',});
 // Given the requisite coordinates and a value, create a marker and a heatmap
 // point
 function createPointOne(map, heatmap, latlng, dataPointOne)
