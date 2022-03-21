@@ -1,10 +1,8 @@
 #map {
     height: 1000px;
     width: 1000px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     
-}
-
-element.style {
-    transform: translate3d(350px, 550px, 9000px);
-    z-index: 2;
 }

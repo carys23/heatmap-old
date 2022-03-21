@@ -1,7 +1,7 @@
 var map = L.map('map', { crs: L.CRS.Simple });
 
 var bounds = [[0,0],[1000,1000]];
-var image = L.imageOverlay('fp.png', bounds).addTo(map);
+var image = L.imageOverlay('floor.png', bounds).addTo(map);
 map.fitBounds(bounds);
 
 
@@ -33,13 +33,13 @@ map.on('zoomend', function(ev) {
     heat.setOptions({radius: defaultHmRadius, blur: defaultHmBlur});
 });
 
-var LeafIcon = L.Icon.extend({
+var LightIcon = L.Icon.extend({
     options: {
     iconSize:[60, 55],
     }
 });
 
-var lightIcon = new LeafIcon ({
+var LightIcon = new LightIcon ({
     iconUrl: 'light.png'});
 
 // Given the requisite coordinates and a value, create a marker and a heatmap
@@ -52,7 +52,7 @@ function createPointOne(map, heatmap, latlng, dataPointOne)
     var latlngint = latlng;
     latlngint.push(dataPointOne);
 
-    var marker = L.marker(latlng,{icon: lightIcon}).addTo(map);
+    var marker = L.marker(latlng,{icon: LightIcon}).addTo(map);
     
     heatmap.addLatLng(latlng);
     return marker;
@@ -68,7 +68,7 @@ function createPointTwo(map, heatmap, latlng, dataPointTwo)
     latlngint.push(dataPointTwo);
 
 
-    var marker = L.marker(latlng,{icon: lightIcon}).addTo(map);
+    var marker = L.marker(latlng,{icon: LightIcon}).addTo(map);
     
     heatmap.addLatLng(latlng);
     return marker;
@@ -84,7 +84,7 @@ function createPointThree(map, heatmap, latlng, dataPointThree)
     latlngint.push(dataPointThree);
 
 
-    var marker = L.marker(latlng,{icon: lightIcon}).addTo(map);
+    var marker = L.marker(latlng,{icon: LightIcon}).addTo(map);
     
     heatmap.addLatLng(latlng);
     return marker;
