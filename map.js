@@ -98,3 +98,11 @@ function createPointThree(map, heatmap, latlng, dataPointThree)
 createPointOne(map, heat, [400,400], dataPointOne);
 createPointTwo(map, heat, [120,120], dataPointTwo);
 createPointThree(map, heat, [500,300], dataPointThree);
+
+
+function removeClass(heat){
+    var off = heat;
+    off.classList.remove(heat);
+}
+
+removeClass(heat);
