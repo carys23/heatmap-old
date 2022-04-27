@@ -19,11 +19,10 @@ myfunc = function (){
 
     (map.on('zoomend',  func = function (e ) {
 
-        let multiplier = map.getZoom() + 1;
+        let multiplier = map.getZoom() + 2;
     
         defaultHmRadius * multiplier;
         defaultHmBlur *  multiplier;
-        
     
         
         hmRadius = defaultHmRadius * multiplier;
@@ -32,6 +31,26 @@ myfunc = function (){
         return heat.setOptions({radius: hmRadius, blur: hmBlur});
     }))};
 }
+
+// myfunc2 = function (){
+//     if (('zoomend' )) {
+
+//     (map.on('zoomend',  func = function (e ) {
+
+//         let multiplier = map.getZoom() + 10;
+    
+//         defaultHmRadius * multiplier;
+//         defaultHmBlur *  multiplier;
+        
+//         alert('myfunc 2');
+        
+//         hmRadius = defaultHmRadius * multiplier;
+//         hmBlur = defaultHmBlur * multiplier;
+    
+//         return heat.setOptions({radius: hmRadius, blur: hmBlur});
+//     }))};
+// }
+
 
 myfunc(heat);
 var heat = L.heatLayer([], {radius: defaultHmRadius, blur: defaultHmBlur }).addTo(map);
