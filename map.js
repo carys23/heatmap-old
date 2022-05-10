@@ -1,19 +1,19 @@
 var map = L.map('map', { crs: L.CRS.Simple });
 
 var bounds = [[0,0],[1000,1000]];
-var image = L.imageOverlay('floor.png', bounds).addTo(map);
+var image = L.imageOverlay('teams.png', bounds).addTo(map);
 map.fitBounds(bounds);
 
 
 
 
 // Change us to vary the base sizes of the heatmap points.
-const defaultHmRadius = 40;
-const defaultHmBlur = 25;
+// const defaultHmRadius = 25;
+// const defaultHmBlur = 20;
 const gradient = {0.4: 'blue', 0.55: 'lime', 0.80: 'yellow', 1: 'red'}
 
 
-var heat = L.heatLayer([], {radius: defaultHmRadius, blur: defaultHmBlur, gradient:gradient }).addTo(map);
+var heat = L.heatLayer([], { }).addTo(map);
 
 
 // We don't want the heatmap to stay the same size as we zoom in and out, we 
@@ -22,25 +22,62 @@ var heat = L.heatLayer([], {radius: defaultHmRadius, blur: defaultHmBlur, gradie
 map.on('zoomend', function(ev) {
     // To avoid multiplying by zero (remove the + 1 and zoom in and out to see 
     // what happens otherwise)
-    let multiplier = map.getZoom() + 1;
+    
 
-    // This probably wants to be a little more sophisticated than just a linear
-    // scaling.
-    defaultHmRadius * multiplier;
-    defaultHmBlur * multiplier;
+let multiplier = map.getZoom();
+
+                 heatmap.addTo(map);
+                 const  defaultHmRadius = 40;
+                 const defaultHmBlur = 20;
+
+                if (multiplier === 1) {
+                    hmRadius = defaultHmRadius;
+                    hmBlur = defaultHmBlur;
+                 
+                }
+
+
+
+                if (multiplier === 3) {
+
+                    hmRadius = defaultHmRadius * 1.4;
+                    hmBlur = defaultHmBlur * 1.5;
+
+                    if (hmRadius >= 70) {
+                        hmRadius = 70;
+                    }
+                    if (hmBlur >= 70) {
+                        hmBlur = 40;
+                    }
+
+                }
+                if (multiplier === 4) {
+
+                    hmRadius = defaultHmRadius * 1.8;
+                    hmBlur = defaultHmBlur * 1.8;
+                    if (hmRadius >= 80) {
+                        hmRadius = 80;
+                    }
+                    if (hmBlur >= 60) {
+                        hmBlur =
+                            defaultHmBlur;
+                    }
+
+                }
 
     // Update the heatmap
-    heat.setOptions({radius: defaultHmRadius, blur: defaultHmBlur});
+    L.heatLayer([], {radius: hmRadius, blur: hmRadius}).addTo(map);
+    // heat.setOptions({radius: hmRadius, blur: hmRadius});
 });
 
 var LightIcon = L.Icon.extend({
     options: {
-    iconSize:[60, 55],
+    iconSize:[25, 20],
     }
 });
 
 var LightIcon = new LightIcon ({
-    iconUrl: 'light.png'});
+    iconUrl: 'light1.png'});
 
 // Given the requisite coordinates and a value, create a marker and a heatmap
 // point
